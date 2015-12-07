@@ -22,7 +22,7 @@ Parent Controller : challengeNC
           </div>
           <ul class="friendList" ng-init="challengeNC.loadFriends()">
             <a href="" ng-repeat="friend in challengeNC.friends | filter : friendSearch | limitTo : 5">
-              <li ng-class="{ 'selected' : challengeNC.selectedFriend === $index }" ng-click="challengeNC.addFriend(friend, $index)">
+              <li ng-class="{ 'selected' : challengeNC.selectedFriend === $index }" ng-click="challengeNC.addFriend(friend, $index)" ng-model="challengeNC.challengee">
                 <img ng-src="image/placeholder.png">
                 <p>{{friend.firstName}} {{friend.lastName}}</p>
               </li>
@@ -95,7 +95,7 @@ Parent Controller : challengeNC
             <label class="btn btn-primary" ng-model="challengeNC.info.charityAmount" uib-btn-radio="'.50'">50&#162;</label>
             <label class="btn btn-primary" ng-model="challengeNC.info.charityAmount" uib-btn-radio="'1.00'">100&#162;</label>
           </div>
-          <button class="btn btn-success pull-right" type="submit">Create Challenge</button>
+          <button class="btn btn-success pull-right" type="submit" ng-disabled="!challengeNC.info.charityAmount ? true : false">Create Challenge</button>
         </form>
       </div>
     </div>
@@ -106,7 +106,7 @@ Parent Controller : challengeNC
   <button type="button" class="btn btn-default dropdown-toggle pull-left" ng-click="challengeNC.prevTab()" ng-if="challengeNC.currentTab > 0" data-toggle="dropdown">
     <span class="icon-arrow-circle-o-left"></span> Back
   </button>
-  <button type="button" class="btn btn-default dropdown-toggle pull-right" ng-click="challengeNC.nextTab()" ng-if="challengeNC.currentTab < 2" data-toggle="dropdown">
+  <button ng-disabled="(challengeNC.info.title && challengeNC.info.type && challengeNC.info.description) ? false : true" type="button" class="btn btn-default dropdown-toggle pull-right" ng-click="challengeNC.nextTab()" ng-if="challengeNC.currentTab < 2" data-toggle="dropdown">
     Next <span class="icon-arrow-circle-o-right"></span>
   </button>
 </div>
