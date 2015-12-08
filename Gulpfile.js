@@ -15,7 +15,7 @@ var paths = {
 
 // deployment build
 gulp.task('build', function (cb) {
-  sequence('scripts', 'sass', 'autoprefixer');
+  sequence('scripts', 'sass');
 });
 
 // JS Hinting
