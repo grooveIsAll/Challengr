@@ -8,9 +8,8 @@
   "main": "server/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build",
     "start": "node server/server.js",
-    "postinstall": "bower install && gulp build && gulp sass"
+    "postinstall": "bower install && gulp build"
   },
   "author": "arthur.mathies@googlemail.com",
   "license": "MIT",
